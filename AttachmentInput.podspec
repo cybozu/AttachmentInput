@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.summary      = "AttachmentInput is a photo attachment keyboard."
   s.description  = "You can easily select photos, compress photos and videos, launch UIImagePickerController, and take pictures on the keyboard."
   s.homepage     = "https://github.com/cybozu/AttachmentInput.git"
-  s.screenshots  = "https://github.com/cybozu/raw/AttachmentInput/master/AttachmentInput.gif"
+  s.screenshots  = "https://github.com/cybozu/AttachmentInput/raw/master/AttachmentInput.png"
   s.author       = { "daiki-m" => "daikimat.ai@gmail.com" }
   s.source       = { :git => "https://github.com/cybozu/AttachmentInput.git", :tag => s.version }
   s.source_files = "AttachmentInput/**/*.{generated.swift,swift}"
