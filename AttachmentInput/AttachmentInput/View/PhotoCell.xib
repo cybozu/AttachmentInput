@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="6EN-Wb-GcM" customClass="PhotoCell" customModule="AttachmentInput" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mvw-jy-bMB">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                        <accessibility key="accessibilityConfiguration" identifier="ImageView_TileThumbnail_AttachmentInput"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vm8-oP-QTU">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="URG-Ym-rP2">
+                        <rect key="frame" x="95" y="95" width="20" height="20"/>
+                    </activityIndicatorView>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbMovie" translatesAutoresizingMaskIntoConstraints="NO" id="CRy-PB-hJS">
+                        <rect key="frame" x="5" y="95" width="20" height="20"/>
+                        <accessibility key="accessibilityConfiguration" identifier="ImageView_TileMovieIcon_AttachmentInput"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="LlR-U7-3cP"/>
+                            <constraint firstAttribute="height" constant="20" id="g6Y-Fa-Nwc"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbCheck" translatesAutoresizingMaskIntoConstraints="NO" id="XOa-i2-gN7">
+                        <rect key="frame" x="95" y="95" width="20" height="20"/>
+                        <accessibility key="accessibilityConfiguration" identifier="ImageView_TileCheckIcon_AttachmentInput"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="8Ag-q4-OtV"/>
+                            <constraint firstAttribute="width" constant="20" id="ed1-gr-WcW"/>
+                        </constraints>
+                    </imageView>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iR7-T9-fbS">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                        <subviews>
+                            <view alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gu5-Dc-oIz">
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbError" translatesAutoresizingMaskIntoConstraints="NO" id="LJ1-XE-iaG" userLabel="disable icon">
+                                <rect key="frame" x="95" y="95" width="20" height="20"/>
+                                <accessibility key="accessibilityConfiguration" identifier="ImageView_TileDisableIcon_AttachmentInput"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="SmM-3I-YTX"/>
+                                    <constraint firstAttribute="width" constant="20" id="TVN-a8-Uq1"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Gu5-Dc-oIz" secondAttribute="trailing" id="06M-Qm-LLd"/>
+                            <constraint firstAttribute="bottom" secondItem="LJ1-XE-iaG" secondAttribute="bottom" constant="5" id="KJM-7A-hjc"/>
+                            <constraint firstItem="Gu5-Dc-oIz" firstAttribute="leading" secondItem="iR7-T9-fbS" secondAttribute="leading" id="LsF-6f-kel"/>
+                            <constraint firstItem="Gu5-Dc-oIz" firstAttribute="top" secondItem="iR7-T9-fbS" secondAttribute="top" id="QNR-Xg-zDb"/>
+                            <constraint firstAttribute="bottom" secondItem="Gu5-Dc-oIz" secondAttribute="bottom" id="vL0-42-hXI"/>
+                            <constraint firstAttribute="trailing" secondItem="LJ1-XE-iaG" secondAttribute="trailing" constant="5" id="yQN-Py-qRP"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="XOa-i2-gN7" secondAttribute="trailing" constant="5" id="39y-VQ-u38"/>
+                <constraint firstAttribute="bottom" secondItem="XOa-i2-gN7" secondAttribute="bottom" constant="5" id="7JJ-1k-ohL"/>
+                <constraint firstItem="Vm8-oP-QTU" firstAttribute="top" secondItem="6EN-Wb-GcM" secondAttribute="top" id="A6q-8A-rDi"/>
+                <constraint firstItem="CRy-PB-hJS" firstAttribute="leading" secondItem="6EN-Wb-GcM" secondAttribute="leading" constant="5" id="JW3-1t-Cp7"/>
+                <constraint firstAttribute="bottom" secondItem="iR7-T9-fbS" secondAttribute="bottom" id="JXw-EJ-4Nn"/>
+                <constraint firstItem="iR7-T9-fbS" firstAttribute="top" secondItem="6EN-Wb-GcM" secondAttribute="top" id="OHE-Sk-zC8"/>
+                <constraint firstAttribute="bottom" secondItem="URG-Ym-rP2" secondAttribute="bottom" constant="5" id="SE8-GR-Kay"/>
+                <constraint firstAttribute="bottom" secondItem="CRy-PB-hJS" secondAttribute="bottom" constant="5" id="TiA-cL-M0g"/>
+                <constraint firstAttribute="trailing" secondItem="mvw-jy-bMB" secondAttribute="trailing" id="Vdr-ZE-XfE"/>
+                <constraint firstAttribute="trailing" secondItem="Vm8-oP-QTU" secondAttribute="trailing" id="aSG-Id-cF9"/>
+                <constraint firstAttribute="bottom" secondItem="Vm8-oP-QTU" secondAttribute="bottom" id="dyJ-Gx-2Kv"/>
+                <constraint firstAttribute="bottom" secondItem="mvw-jy-bMB" secondAttribute="bottom" id="eZn-m7-E0e"/>
+                <constraint firstItem="Vm8-oP-QTU" firstAttribute="leading" secondItem="6EN-Wb-GcM" secondAttribute="leading" id="eje-B2-cCt"/>
+                <constraint firstItem="mvw-jy-bMB" firstAttribute="top" secondItem="6EN-Wb-GcM" secondAttribute="top" id="gBF-F9-2IE"/>
+                <constraint firstItem="iR7-T9-fbS" firstAttribute="leading" secondItem="6EN-Wb-GcM" secondAttribute="leading" id="goi-gy-87r"/>
+                <constraint firstAttribute="trailing" secondItem="URG-Ym-rP2" secondAttribute="trailing" constant="5" id="nZb-Z5-qZQ"/>
+                <constraint firstItem="mvw-jy-bMB" firstAttribute="leading" secondItem="6EN-Wb-GcM" secondAttribute="leading" id="rke-mv-iE1"/>
+                <constraint firstAttribute="trailing" secondItem="iR7-T9-fbS" secondAttribute="trailing" id="zxS-hU-wEU"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="UOp-ZH-Eu2"/>
+            <size key="customSize" width="120" height="120"/>
+            <connections>
+                <outlet property="checkIconView" destination="XOa-i2-gN7" id="2dR-GD-tYF"/>
+                <outlet property="disableView" destination="iR7-T9-fbS" id="bGW-ez-yFC"/>
+                <outlet property="gradationView" destination="Vm8-oP-QTU" id="diA-cP-1rY"/>
+                <outlet property="indicatorView" destination="URG-Ym-rP2" id="ctO-Gb-qQ0"/>
+                <outlet property="movieIconView" destination="CRy-PB-hJS" id="c7P-ad-XNf"/>
+                <outlet property="thumbnailView" destination="mvw-jy-bMB" id="lyf-32-Awq"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="thumbCheck" width="20" height="20"/>
+        <image name="thumbError" width="20" height="20"/>
+        <image name="thumbMovie" width="20" height="20"/>
+    </resources>
+</document>

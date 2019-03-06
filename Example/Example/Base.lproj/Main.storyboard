@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xIT-72-O8I">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="qIs-HO-GEZ">
+            <objects>
+                <collectionViewController id="xIT-72-O8I" customClass="MainViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" dataMode="prototypes" id="fjN-K9-MNQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="4" id="L1B-5y-hqY">
+                            <size key="itemSize" width="115" height="150"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="8" minY="16" maxX="8" maxY="16"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="XlD-bz-rgX" customClass="ImageCell" customModule="Example" customModuleProvider="target">
+                                <rect key="frame" x="8" y="16" width="115" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="115" height="150"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UeX-NO-BbG">
+                                            <rect key="frame" x="5" y="5" width="105" height="105"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dw6-Gd-jdy">
+                                            <rect key="frame" x="8" y="115" width="99" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dl9-rs-Zzl">
+                                            <rect key="frame" x="8" y="131" width="99" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGA-Uc-2GH">
+                                            <rect key="frame" x="93" y="0.0" width="22" height="22"/>
+                                            <state key="normal" image="deleteFile"/>
+                                            <connections>
+                                                <action selector="tapRemove" destination="XlD-bz-rgX" eventType="primaryActionTriggered" id="DgL-Fh-HFF"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Dl9-rs-Zzl" secondAttribute="trailing" id="2Zx-0c-Jmf"/>
+                                    <constraint firstItem="Dl9-rs-Zzl" firstAttribute="top" secondItem="Dw6-Gd-jdy" secondAttribute="bottom" id="5Yk-xD-e5V"/>
+                                    <constraint firstItem="UeX-NO-BbG" firstAttribute="height" secondItem="XlD-bz-rgX" secondAttribute="width" constant="-10" id="7is-W2-kRy"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZGA-Uc-2GH" secondAttribute="trailing" id="IK3-iY-GPg"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Dw6-Gd-jdy" secondAttribute="trailing" id="MR2-bY-mKp"/>
+                                    <constraint firstItem="UeX-NO-BbG" firstAttribute="top" secondItem="XlD-bz-rgX" secondAttribute="top" constant="5" id="QSR-7E-bTS"/>
+                                    <constraint firstItem="Dw6-Gd-jdy" firstAttribute="top" secondItem="UeX-NO-BbG" secondAttribute="bottom" constant="5" id="VQh-JC-eIK"/>
+                                    <constraint firstItem="UeX-NO-BbG" firstAttribute="leading" secondItem="XlD-bz-rgX" secondAttribute="leading" constant="5" id="atq-pP-Be5"/>
+                                    <constraint firstItem="Dl9-rs-Zzl" firstAttribute="leading" secondItem="XlD-bz-rgX" secondAttribute="leadingMargin" id="bbf-4c-kdO"/>
+                                    <constraint firstItem="Dw6-Gd-jdy" firstAttribute="leading" secondItem="XlD-bz-rgX" secondAttribute="leadingMargin" id="ewY-82-t9E"/>
+                                    <constraint firstItem="ZGA-Uc-2GH" firstAttribute="top" secondItem="XlD-bz-rgX" secondAttribute="top" id="hwi-E9-16e"/>
+                                    <constraint firstAttribute="trailing" secondItem="UeX-NO-BbG" secondAttribute="trailing" constant="5" id="twx-SP-3yD"/>
+                                </constraints>
+                                <size key="customSize" width="115" height="150"/>
+                                <connections>
+                                    <outlet property="fileName" destination="Dw6-Gd-jdy" id="zFF-OA-5cX"/>
+                                    <outlet property="fileSize" destination="Dl9-rs-Zzl" id="Ait-1a-3Mp"/>
+                                    <outlet property="imageView" destination="UeX-NO-BbG" id="Kor-6z-MIO"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="xIT-72-O8I" id="Gei-GV-zaq"/>
+                            <outlet property="delegate" destination="xIT-72-O8I" id="DZo-DP-kdV"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T2b-XZ-Qx3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="deleteFile" width="22" height="22"/>
+    </resources>
+</document>
