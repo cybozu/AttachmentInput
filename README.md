@@ -5,9 +5,9 @@ AttachmentInput is a photo attachment keyboard.It is similar to the keyboard for
 <img src="https://github.com/cybozu/AttachmentInput/raw/master/AttachmentInput.gif" width="380px"/>
 
 ##  🍱 Supported Features
-* Shoot a image on the keyboard
+* Shoot a photo on the keyboard
 * Pick image/video on the keyboard
-* pick image/video from UIImagePickerController
+* Pick image/video from UIImagePickerController
 * Download and attach image/video stored on iCloud
 * Compress image/video
 * Get the image/video file name, file size, thumbnail image
