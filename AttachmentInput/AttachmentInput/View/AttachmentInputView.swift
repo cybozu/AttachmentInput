@@ -31,8 +31,8 @@ class AttachmentInputView: UIView {
     }
     
     fileprivate enum SectionItemType {
-        case ImagePickerItem()
-        case CameraItem()
+        case ImagePickerItem
+        case CameraItem
         case PhotoListItem(photo: AttachmentInputPhoto, status: AttachmentInputPhotoStatus)
     }
     
@@ -62,12 +62,12 @@ class AttachmentInputView: UIView {
         
         self.dataSource = RxCollectionViewSectionedReloadDataSource<SectionType>(configureCell: { (_, _, indexPath, item) -> UICollectionViewCell in
             switch item {
-            case .ImagePickerItem():
+            case .ImagePickerItem:
                 let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "ImagePickerCell", for: indexPath) as! ImagePickerCell
                 cell.delegate = self
                 cell.setup()
                 return cell
-            case .CameraItem():
+            case .CameraItem:
                 let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "CameraCell", for: indexPath) as! CameraCell
                 cell.delegate = self
                 cell.setup()
@@ -80,8 +80,8 @@ class AttachmentInputView: UIView {
         })
         // Add picker control and camera section
         var ret = [SectionType]()
-        ret.append(SectionType.ImagePickerSection(items: [SectionItemType.ImagePickerItem()]))
-        ret.append(SectionType.CameraSection(items: [SectionItemType.CameraItem()]))
+        ret.append(SectionType.ImagePickerSection(items: [SectionItemType.ImagePickerItem]))
+        ret.append(SectionType.CameraSection(items: [SectionItemType.CameraItem]))
         let controllerObservable = Observable.just(ret)
         
         // postpone heavy processing to first display the keyboard
