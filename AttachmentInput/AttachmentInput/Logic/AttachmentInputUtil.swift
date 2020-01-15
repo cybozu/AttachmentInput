@@ -95,6 +95,8 @@ class AttachmentInputUtil {
             return AVAssetExportPreset960x540
         case .typeIFrame1280x720:
             return AVAssetExportPreset1280x720
+        @unknown default:
+            fatalError()
         }
     }
     
