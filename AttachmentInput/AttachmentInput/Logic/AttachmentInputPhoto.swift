@@ -29,7 +29,6 @@ class AttachmentInputPhoto {
     struct PhotoProperties {
         var filename: String
         var fileSize: Int64
-        var fileURL: URL
         var exceededSizeLimit: Bool
     }
 
@@ -94,21 +93,18 @@ class AttachmentInputPhoto {
                 let unsignedInt64 = resource.value(forKey: "fileSize") as? CLong
                 sizeOnDisk = Int64(bitPattern: UInt64(unsignedInt64!))
                 fileName = resource.originalFilename
-                if let fileURL = resource.value(forKey: "fileURL") as? URL {
-                    if sizeOnDisk < self.uploadSizeLimit {
-                        exceededSizeLimit = false
-                    } else {
-                        exceededSizeLimit = true
-                    }
-                    self.propertiesSubject.onNext(PhotoProperties(
-                        filename: fileName,
-                        fileSize: sizeOnDisk,
-                        fileURL: fileURL,
-                        exceededSizeLimit: exceededSizeLimit)
-                    )
-                    self.propertiesSubject.onCompleted()
-                    return
+                if sizeOnDisk < self.uploadSizeLimit {
+                    exceededSizeLimit = false
+                } else {
+                    exceededSizeLimit = true
                 }
+                self.propertiesSubject.onNext(PhotoProperties(
+                    filename: fileName,
+                    fileSize: sizeOnDisk,
+                    exceededSizeLimit: exceededSizeLimit)
+                )
+                self.propertiesSubject.onCompleted()
+                return
             }
             self.propertiesSubject.onError(AttachmentInputError.propertiesLoadFailed)
         }
