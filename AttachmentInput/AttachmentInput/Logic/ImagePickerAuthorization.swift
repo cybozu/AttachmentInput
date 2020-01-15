@@ -57,6 +57,8 @@ class ImagePickerAuthorization {
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { granted in
                 self.videoDisableSubject.onNext(!granted)
             })
+        @unknown default:
+            fatalError()
         }
     }
     
@@ -78,6 +80,8 @@ class ImagePickerAuthorization {
             PHPhotoLibrary.requestAuthorization({ (status) in
                 self.photoDisableSubject.onNext((status != .authorized))
             })
+        @unknown default:
+            fatalError()
         }
     }
 }
