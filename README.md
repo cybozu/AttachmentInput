@@ -15,7 +15,7 @@ AttachmentInput is a photo attachment keyboard.It is similar to the keyboard for
   * see [AttachmentInputConfig](https://github.com/cybozu/AttachmentInput/blob/master/AttachmentInput/AttachmentInput/AttachmentInputConfiguration.swift)
 
 ## ⚓  Requirements
-AttachmentInput is written in Swift 4.2. Compatible with iOS 10.0+
+AttachmentInput is written in Swift 5. Compatible with iOS 10.0+
 
 ## 🏃 Install
 Add this to your CocoaPods Podfile.
