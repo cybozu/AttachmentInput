@@ -83,19 +83,13 @@ class AttachmentInputView: UIView {
         ret.append(SectionType.ImagePickerSection(items: [SectionItemType.ImagePickerItem]))
         ret.append(SectionType.CameraSection(items: [SectionItemType.CameraItem]))
         let controllerObservable = Observable.just(ret)
-        
-        // postpone heavy processing to first display the keyboard
-        DispatchQueue.main.async {
-            // add Photos
-            let photosOptions = PHFetchOptions()
-            photosOptions.fetchLimit = self.configuration.photoCellCountLimit
-            photosOptions.predicate = NSPredicate(format: "mediaType == %d || mediaType == %d",
-                                                  PHAssetMediaType.image.rawValue,
-                                                  PHAssetMediaType.video.rawValue)
-            photosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-            self.logic?.pHFetchResultObserver.onNext(PHAsset.fetchAssets(with: photosOptions))
+
+        self.checkPhotoAuthorizationStatus { [weak self] authorized in
+            if authorized {
+                self?.fetchAssets()
+            }
         }
-        
+
         // show collectionView
         self.collectionView.delegate = self
         Observable<[SectionType]>.combineLatest(controllerObservable, self.logic!.photosWithStatus) { controller, output in
@@ -117,6 +111,36 @@ class AttachmentInputView: UIView {
                 }
             }
         }).disposed(by: self.disposeBag)
+    }
+
+    private func checkPhotoAuthorizationStatus(completion: @escaping (_ authorized: Bool) -> Void) {
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch (status) {
+        case .authorized:
+            completion(true)
+        case .denied, .restricted:
+            completion(false)
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({ (status) in
+                completion(status == .authorized)
+            })
+        @unknown default:
+            fatalError()
+        }
+    }
+
+    private func fetchAssets() {
+        // postpone heavy processing to first display the keyboard
+        DispatchQueue.main.async {
+            // add Photos
+            let photosOptions = PHFetchOptions()
+            photosOptions.fetchLimit = self.configuration.photoCellCountLimit
+            photosOptions.predicate = NSPredicate(format: "mediaType == %d || mediaType == %d",
+                                                  PHAssetMediaType.image.rawValue,
+                                                  PHAssetMediaType.video.rawValue)
+            photosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+            self.logic?.pHFetchResultObserver.onNext(PHAsset.fetchAssets(with: photosOptions))
+        }
     }
     
     func initializeIfNeed() {
