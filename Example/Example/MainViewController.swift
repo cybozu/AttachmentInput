@@ -18,7 +18,8 @@ class MainViewController: UICollectionViewController {
     private var viewModel = MainViewModel()
     private var dataSource: RxCollectionViewSectionedAnimatedDataSource<MainViewController.SectionOfPhotoData>!
     private var bottomView: UIView!
-    
+    private var showInputView = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         Visualizer.start()
@@ -26,6 +27,18 @@ class MainViewController: UICollectionViewController {
         self.setupCollectionView()
         self.setupAttachmentInput()
         self.setupBottomView()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        if !self.isFirstResponder {
+            self.becomeFirstResponder()
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        if self.isFirstResponder {
+            self.resignFirstResponder()
+        }
     }
 
     private func setupCollectionView() {
@@ -62,24 +75,16 @@ class MainViewController: UICollectionViewController {
     }
 
     private func setupBottomView() {
-        self.bottomView = ButtonAccessoryView.getView(target: self, action: #selector(toggleFirstResponder), inputView: self.attachmentInput.view)
-
-        // show BottomView
-        self.becomeFirstResponder()
-
-        // self.bottomView.resignFirstResponder is not call when dismiss the keyboard interactively
-        NotificationCenter.default.rx
-            .notification(UIResponder.keyboardDidHideNotification)
-            .subscribe(onNext: { (_) in
-                self.becomeFirstResponder()
-            }).disposed(by: self.disposeBag)
+        self.bottomView = ButtonAccessoryView.getView(target: self, action: #selector(toggleFirstResponder))
     }
 
     @objc func toggleFirstResponder() {
-        if self.bottomView.isFirstResponder {
-            self.bottomView.resignFirstResponder()
+        if self.showInputView {
+            self.showInputView = false
+            self.reloadInputViews()
         } else {
-            self.bottomView.becomeFirstResponder()
+            self.showInputView = true
+            self.reloadInputViews()
         }
     }
 
@@ -88,7 +93,19 @@ class MainViewController: UICollectionViewController {
     }
 
     override var inputAccessoryView: UIView? {
-        return self.bottomView
+        if isFirstResponder {
+            return self.bottomView
+        } else {
+            return nil
+        }
+    }
+
+    override var inputView: UIView? {
+        if self.showInputView {
+            return self.attachmentInput.view
+        } else {
+            return nil
+        }
     }
 
     enum SectionOfPhotoData {
