@@ -42,6 +42,7 @@ class ImagePickerCell: UICollectionViewCell {
             picker.videoQuality = videoQuality
         }
         picker.delegate = self
+        picker.modalPresentationStyle = .fullScreen
         self.getTopViewController()?.present(picker, animated: true)
     }
 
@@ -57,6 +58,7 @@ class ImagePickerCell: UICollectionViewCell {
             picker.videoQuality = videoQuality
         }
         picker.delegate = self
+        picker.modalPresentationStyle = .fullScreen
         self.getTopViewController()?.present(picker, animated: true)
     }
 
