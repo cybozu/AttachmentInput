@@ -93,7 +93,7 @@ class MainViewController: UICollectionViewController {
     }
 
     override var inputAccessoryView: UIView? {
-        if isFirstResponder {
+        if self.isFirstResponder {
             return self.bottomView
         } else {
             return nil
@@ -101,7 +101,7 @@ class MainViewController: UICollectionViewController {
     }
 
     override var inputView: UIView? {
-        if self.showInputView {
+        if self.isFirstResponder && self.showInputView {
             return self.attachmentInput.view
         } else {
             return nil
