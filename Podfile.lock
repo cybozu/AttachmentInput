@@ -19,7 +19,7 @@ DEPENDENCIES:
   - TouchVisualizer
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Differentiator
     - RxCocoa
     - RxDataSources
@@ -37,4 +37,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: fcda81b75b23a99b1a5be05bba1d43ab54dadadd
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4
