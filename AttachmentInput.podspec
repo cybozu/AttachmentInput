@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "AttachmentInput"
   s.version      = "0.0.2"
-  s.swift_version = "4.2.0"
+  s.swift_version = "5.0.0"
   s.ios.deployment_target = "10.0"
   s.license      = "MIT"
   s.summary      = "AttachmentInput is a photo attachment keyboard."
