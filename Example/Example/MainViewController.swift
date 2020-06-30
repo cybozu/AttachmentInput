@@ -10,7 +10,6 @@ import UIKit
 import AttachmentInput
 import RxSwift
 import RxDataSources
-import TouchVisualizer
 
 class MainViewController: UICollectionViewController {
     private let disposeBag = DisposeBag()
@@ -22,7 +21,6 @@ class MainViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Visualizer.start()
 
         self.setupCollectionView()
         self.setupAttachmentInput()

@@ -14,6 +14,5 @@ target 'Example' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'
-  pod 'TouchVisualizer'
 end
 
