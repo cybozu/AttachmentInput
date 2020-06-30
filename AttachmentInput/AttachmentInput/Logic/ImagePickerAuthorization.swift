@@ -72,7 +72,7 @@ class ImagePickerAuthorization {
         let status = PHPhotoLibrary.authorizationStatus()
         
         switch (status) {
-        case .authorized:
+        case .authorized, .limited:
             self.photoDisableSubject.onNext(false)
         case .denied, .restricted:
             self.photoDisableSubject.onNext(true)

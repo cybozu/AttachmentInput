@@ -116,7 +116,7 @@ class AttachmentInputView: UIView {
     private func checkPhotoAuthorizationStatus(completion: @escaping (_ authorized: Bool) -> Void) {
         let status = PHPhotoLibrary.authorizationStatus()
         switch (status) {
-        case .authorized:
+        case .authorized, .limited:
             completion(true)
         case .denied, .restricted:
             completion(false)
