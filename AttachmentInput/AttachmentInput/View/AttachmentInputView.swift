@@ -195,7 +195,7 @@ extension AttachmentInputView: ImagePickerCellDelegate {
             return
         }
         
-        if let phAsset = self.getPHAsset(didFinishPickingMediaWithInfo: info) {
+        if let phAsset = info[.phAsset] as? PHAsset {
             // When selecting from the photo library
             if let mediaType = info[.mediaType] as? String {
                 if mediaType == kUTTypeImage as String {
@@ -220,19 +220,7 @@ extension AttachmentInputView: ImagePickerCellDelegate {
             self.delegate?.imagePickerControllerDidDismiss()
         }
     }
-    
-    private func getPHAsset(didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) -> PHAsset? {
-        if #available(iOS 11.0, *) {
-            return info[.phAsset] as? PHAsset
-        } else {
-            if let url = info[.referenceURL] as? URL {
-                let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [url], options: nil)
-                return fetchResult.firstObject
-            }
-        }
-        return nil
-    }
-    
+        
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         DispatchQueue.main.async {
             picker.dismiss(animated: true, completion: nil)

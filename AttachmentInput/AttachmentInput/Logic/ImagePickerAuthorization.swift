@@ -12,25 +12,18 @@ import Photos
 
 class ImagePickerAuthorization {
     private let videoDisableSubject = BehaviorSubject<Bool>(value: true)
-    private let photoDisableSubject = BehaviorSubject<Bool>(value: true)
     
     let videoDisable: Observable<Bool>
     var videoDisableValue: Bool {
         return self.videoDisableSubject.value(true)
     }
-    let photoDisable: Observable<Bool>
-    var photoDisableValue: Bool {
-        return self.photoDisableSubject.value(true)
-    }
     
     init() {
         self.videoDisable = self.videoDisableSubject.asObservable()
-        self.photoDisable = self.photoDisableSubject.asObservable()
     }
 
     func checkAuthorizationStatus() {
         checkVideoAuthorizationStatus()
-        checkPhotoAuthorizationStatus()
     }
 
     private var isSimulator: Bool {
@@ -56,29 +49,6 @@ class ImagePickerAuthorization {
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { granted in
                 self.videoDisableSubject.onNext(!granted)
-            })
-        @unknown default:
-            fatalError()
-        }
-    }
-    
-    private func checkPhotoAuthorizationStatus() {
-        // You can use imagePicker without permission if iOS 11 or higher
-        if #available(iOS 11.0, *) {
-            self.photoDisableSubject.onNext(false)
-            return
-        }
-        
-        let status = PHPhotoLibrary.authorizationStatus()
-        
-        switch (status) {
-        case .authorized, .limited:
-            self.photoDisableSubject.onNext(false)
-        case .denied, .restricted:
-            self.photoDisableSubject.onNext(true)
-        case .notDetermined:
-            PHPhotoLibrary.requestAuthorization({ (status) in
-                self.photoDisableSubject.onNext((status != .authorized))
             })
         @unknown default:
             fatalError()
