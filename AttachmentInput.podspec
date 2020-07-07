@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name         = "AttachmentInput"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.swift_version = "5.0.0"
-  s.ios.deployment_target = "10.0"
+  s.ios.deployment_target = "12.0"
   s.license      = "MIT"
   s.summary      = "AttachmentInput is a photo attachment keyboard."
   s.description  = "You can easily select photos, compress photos and videos, launch UIImagePickerController, and take pictures on the keyboard."

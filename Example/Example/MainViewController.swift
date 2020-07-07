@@ -10,7 +10,6 @@ import UIKit
 import AttachmentInput
 import RxSwift
 import RxDataSources
-import TouchVisualizer
 
 class MainViewController: UICollectionViewController {
     private let disposeBag = DisposeBag()
@@ -22,7 +21,6 @@ class MainViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Visualizer.start()
 
         self.setupCollectionView()
         self.setupAttachmentInput()
@@ -44,11 +42,6 @@ class MainViewController: UICollectionViewController {
     private func setupCollectionView() {
         self.collectionView?.delegate = nil
         self.collectionView?.dataSource = nil
-        
-        if #available(iOS 11.0, *) {
-        } else {
-            self.collectionView.contentInset.top = UIApplication.shared.statusBarFrame.size.height
-        }
 
         self.dataSource = RxCollectionViewSectionedAnimatedDataSource<MainViewController.SectionOfPhotoData>(configureCell: {
             (_: CollectionViewSectionedDataSource<MainViewController.SectionOfPhotoData>, collectionView: UICollectionView, indexPath: IndexPath, item: PhotoData) in

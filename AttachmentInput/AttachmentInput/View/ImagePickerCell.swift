@@ -47,10 +47,6 @@ class ImagePickerCell: UICollectionViewCell {
     }
 
     @IBAction func tapPhotoLibrary() {
-        if self.imagePickerAuthorization.photoDisableValue {
-            return
-        }
-
         let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
         picker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
@@ -92,13 +88,6 @@ class ImagePickerCell: UICollectionViewCell {
                 self?.setupDesignForCameraButton(disable: disable)
             }
         }).disposed(by: self.disposeBag)
-        
-        self.imagePickerAuthorization.photoDisable.subscribe(onNext: { [weak self] disable in
-            DispatchQueue.main.async {
-                self?.setupDesignForPhotosButton(disable: disable)
-            }
-        }).disposed(by: self.disposeBag)
-
     }
 
     private func setupText() {
@@ -132,17 +121,8 @@ class ImagePickerCell: UICollectionViewCell {
     }
     
     private func setupDesignForPhotosButton(disable: Bool) {
-        if disable {
-            self.photoLibraryButtonIcon.tintColor = AttachmentInputColor.borderGray
-            self.photoLibraryButtonLabel.textColor = AttachmentInputColor.borderGray
-            self.photoLibraryButtonIcon.alpha = 0.5
-            self.photoLibraryButtonLabel.alpha = 0.5
-        } else {
-            self.photoLibraryButtonIcon.tintColor = AttachmentInputColor.primaryColor
-            self.photoLibraryButtonLabel.textColor = AttachmentInputColor.primaryColor
-            self.photoLibraryButtonIcon.alpha = 1
-            self.photoLibraryButtonLabel.alpha = 1
-        }
+        self.photoLibraryButtonIcon.tintColor = AttachmentInputColor.primaryColor
+        self.photoLibraryButtonLabel.textColor = AttachmentInputColor.primaryColor
     }
 }
 

@@ -30,7 +30,7 @@ class CameraCell: UICollectionViewCell {
         self.captureDoubleTap = true
 
         let photoQuality = NSNumber(value: self.delegate?.photoQuality ?? 1)
-        let format: [String : Any] = [AVVideoCodecKey: AVVideoCodecJPEG, AVVideoCompressionPropertiesKey: [AVVideoQualityKey: photoQuality]]
+        let format: [String : Any] = [AVVideoCodecKey: AVVideoCodecType.jpeg, AVVideoCompressionPropertiesKey: [AVVideoQualityKey: photoQuality]]
         let settingsForMonitoring = AVCapturePhotoSettings(format: format)
         settingsForMonitoring.flashMode = .off
         CameraView.stillImageOutput?.capturePhoto(with: settingsForMonitoring, delegate: self)
@@ -65,11 +65,9 @@ class CameraCell: UICollectionViewCell {
 }
 
 extension CameraCell: AVCapturePhotoCaptureDelegate {
-    func photoOutput(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
-        if let photoSampleBuffer = photoSampleBuffer {
-            if let photoData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer) {
-                self.delegate?.didTakePicture(imageData: photoData)
-            }
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let photoData = photo.fileDataRepresentation() {
+            self.delegate?.didTakePicture(imageData: photoData)
         }
         self.captureDoubleTap = false
     }
