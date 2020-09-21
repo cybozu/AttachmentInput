@@ -114,16 +114,27 @@ class AttachmentInputView: UIView {
     }
 
     private func checkPhotoAuthorizationStatus(completion: @escaping (_ authorized: Bool) -> Void) {
-        let status = PHPhotoLibrary.authorizationStatus()
+        let status: PHAuthorizationStatus
+        if #available(iOS 14, *) {
+            status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
+        } else {
+            status = PHPhotoLibrary.authorizationStatus()
+        }
         switch (status) {
         case .authorized, .limited:
             completion(true)
         case .denied, .restricted:
             completion(false)
         case .notDetermined:
-            PHPhotoLibrary.requestAuthorization({ (status) in
-                completion(status == .authorized)
-            })
+            if #available(iOS 14, *) {
+                PHPhotoLibrary.requestAuthorization(for: .readWrite, handler: { status in
+                    completion(status == .authorized)
+                })
+            } else {
+                PHPhotoLibrary.requestAuthorization({ (status) in
+                    completion(status == .authorized)
+                })
+            }
         @unknown default:
             fatalError()
         }
