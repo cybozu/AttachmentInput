@@ -84,7 +84,7 @@ class AttachmentInputView: UIView {
         ret.append(SectionType.CameraSection(items: [SectionItemType.CameraItem]))
         let controllerObservable = Observable.just(ret)
 
-        self.checkPhotoAuthorizationStatus { [weak self] authorized in
+        self.requestAuthorizationIfNeeded { [weak self] authorized in
             if authorized {
                 self?.fetchAssets()
             }
@@ -113,7 +113,7 @@ class AttachmentInputView: UIView {
         }).disposed(by: self.disposeBag)
     }
 
-    private func checkPhotoAuthorizationStatus(completion: @escaping (_ authorized: Bool) -> Void) {
+    private func requestAuthorizationIfNeeded(completion: @escaping (_ authorized: Bool) -> Void) {
         let status: PHAuthorizationStatus
         if #available(iOS 14, *) {
             status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
