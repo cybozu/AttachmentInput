@@ -128,7 +128,7 @@ class AttachmentInputView: UIView {
         case .notDetermined:
             if #available(iOS 14, *) {
                 PHPhotoLibrary.requestAuthorization(for: .readWrite, handler: { status in
-                    completion(status == .authorized)
+                    completion(status == .authorized || status == .limited)
                 })
             } else {
                 PHPhotoLibrary.requestAuthorization({ (status) in
