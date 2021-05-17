@@ -12,7 +12,7 @@ import RxSwift
 import AVFoundation
 import MobileCoreServices
 
-protocol ImagePickerCellDelegate: class {
+protocol ImagePickerCellDelegate: AnyObject {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any])
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     var videoQuality: UIImagePickerController.QualityType { get }

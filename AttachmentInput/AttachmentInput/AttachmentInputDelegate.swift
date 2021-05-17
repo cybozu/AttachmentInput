@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public protocol AttachmentInputDelegate: class {
+public protocol AttachmentInputDelegate: AnyObject {
     func inputImage(imageData: Data, fileName: String, fileSize: Int64, fileId: String, imageThumbnail: Data?)
     func inputMedia(url: URL, fileName: String, fileSize: Int64, fileId: String, imageThumbnail: Data?)
     func removeFile(fileId: String)
