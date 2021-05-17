@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import AVFoundation
 
-protocol CameraCellDelegate: class {
+protocol CameraCellDelegate: AnyObject {
     func didTakePicture(imageData: Data)
     var photoQuality: Float { get }
 }
