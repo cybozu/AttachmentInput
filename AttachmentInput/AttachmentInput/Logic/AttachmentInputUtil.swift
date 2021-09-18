@@ -14,8 +14,8 @@ class AttachmentInputUtil {
     static func getSizeFromFileUrl(fileUrl: URL) -> Int64? {
         var resultSize: Int64?
         if let fileAttribute = try? FileManager.default.attributesOfItem(atPath: fileUrl.path) {
-            if let filseSize = fileAttribute[FileAttributeKey.size] as? Int64 {
-                resultSize = filseSize
+            if let fileSize = fileAttribute[FileAttributeKey.size] as? Int64 {
+                resultSize = fileSize
             }
         }
         return resultSize
