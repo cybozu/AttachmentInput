@@ -20,10 +20,20 @@ AttachmentInput is a photo attachment keyboard.It is similar to the keyboard for
 - Development with Xcode 12.0+
 
 ## 🏃 Install
+### CocoaPods
 Add this to your CocoaPods Podfile.
 ```
 pod 'AttachmentInput'
 ```
+
+### Swift Package Manager
+Add `dependencies` value of your `Package.swift`.
+```swift
+dependencies: [
+    .package(url: "https://github.com/cybozu/AttachmentInput.git", .upToNextMajor(from: "0.0.6"))
+]
+```
+
 ## 🛠️ Usage
 1. Add privacy properties in `info.plist` with a usage description
     * Privacy - Photo Library Usage Description  
