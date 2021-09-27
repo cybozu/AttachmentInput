@@ -6,3 +6,7 @@ xcuserdata/
 
 ## CocoaPods
 Pods/
+
+## Swift Package Manager
+.swiftpm
+.build/
