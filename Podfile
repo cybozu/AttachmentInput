@@ -3,7 +3,7 @@ use_frameworks!
 workspace 'AttachmentInput'
 
 target 'AttachmentInput' do
-  project 'AttachmentInput/AttachmentInput.xcodeproj'
+  project 'Sources/AttachmentInput.xcodeproj'
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'

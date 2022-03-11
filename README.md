@@ -30,7 +30,7 @@ pod 'AttachmentInput'
 Add `dependencies` value of your `Package.swift`.
 ```swift
 dependencies: [
-    .package(url: "https://github.com/cybozu/AttachmentInput.git", .upToNextMajor(from: "0.0.6"))
+    .package(url: "https://github.com/cybozu/AttachmentInput.git", .upToNextMajor(from: "1.0.0"))
 ]
 ```
 

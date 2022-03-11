@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImagePickerCell" customModule="AttachmentInput" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImagePickerCell" id="twf-Po-7vs" customClass="ImagePickerCell" customModule="AttachmentInput" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImagePickerCell" id="twf-Po-7vs" customClass="ImagePickerCell" customModule="AttachmentInput">
             <rect key="frame" x="0.0" y="0.0" width="124" height="263"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -48,7 +46,7 @@
                                     <constraint firstItem="lV4-M4-kAc" firstAttribute="top" secondItem="q9W-Ng-6EL" secondAttribute="top" id="tU8-jJ-6d6"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKO-Dq-HW9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKO-Dq-HW9">
                                 <rect key="frame" x="0.0" y="0.0" width="115" height="116.5"/>
                                 <accessibility key="accessibilityConfiguration" identifier="Button_Camera_AttachmentInput"/>
                                 <connections>
@@ -101,7 +99,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Hyj-JG-sLa" secondAttribute="trailing" id="tbh-HH-OVT"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ypc-Cc-8tT">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ypc-Cc-8tT">
                                 <rect key="frame" x="0.0" y="0.0" width="115" height="116.5"/>
                                 <accessibility key="accessibilityConfiguration" identifier="Button_PhotoLibrary_AttachmentInput"/>
                                 <connections>
@@ -127,6 +125,7 @@
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="4Hz-KM-H0Q"/>
             <constraints>
                 <constraint firstItem="O8y-Zi-DE7" firstAttribute="top" secondItem="twf-Po-7vs" secondAttribute="top" constant="10" id="4f6-39-xUu"/>
                 <constraint firstItem="O8y-Zi-DE7" firstAttribute="leading" secondItem="twf-Po-7vs" secondAttribute="leading" constant="6" id="Llt-3I-bNd"/>
@@ -137,7 +136,6 @@
                 <constraint firstAttribute="trailing" secondItem="O8y-Zi-DE7" secondAttribute="trailing" constant="3" id="kzi-fB-rZH"/>
                 <constraint firstItem="ODb-Nl-mTg" firstAttribute="leading" secondItem="twf-Po-7vs" secondAttribute="leading" constant="6" id="se9-FD-4UT"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="4Hz-KM-H0Q"/>
             <size key="customSize" width="124" height="263"/>
             <connections>
                 <outlet property="cameraButtonIcon" destination="lV4-M4-kAc" id="h5m-7w-292"/>
@@ -147,6 +145,7 @@
                 <outlet property="photoLibraryButtonLabel" destination="Hyj-JG-sLa" id="u1r-FG-a2a"/>
                 <outlet property="photoLibraryButtonView" destination="ODb-Nl-mTg" id="dcf-im-Tzj"/>
             </connections>
+            <point key="canvasLocation" x="139" y="126"/>
         </collectionViewCell>
     </objects>
     <resources>

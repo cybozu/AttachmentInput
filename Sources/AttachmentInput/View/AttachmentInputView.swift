@@ -48,14 +48,24 @@ class AttachmentInputView: UIView {
     private var configuration: AttachmentInputConfiguration!
 
     static func createAttachmentInputView(configuration: AttachmentInputConfiguration) -> AttachmentInputView {
-        let attachmentInputView = Bundle(for: self).loadNibNamed("AttachmentInputView", owner: self, options: nil)?.first as! AttachmentInputView
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
+        let bundle = Bundle(for: self)
+        #endif
+        let nib = UINib(nibName: "AttachmentInputView", bundle: bundle)
+        let attachmentInputView = nib.instantiate(withOwner: self, options: nil).first as! AttachmentInputView
         attachmentInputView.configuration = configuration
         attachmentInputView.logic = AttachmentInputViewLogic(configuration: configuration)
         return attachmentInputView
     }
     
     private func initializeCollectionView() {
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
         let bundle = Bundle(for: self.classForCoder)
+        #endif
         self.collectionView.register(UINib(nibName: "ImagePickerCell", bundle: bundle), forCellWithReuseIdentifier: "ImagePickerCell")
         self.collectionView.register(UINib(nibName: "CameraCell", bundle: bundle), forCellWithReuseIdentifier: "CameraCell")
         self.collectionView.register(UINib(nibName: "PhotoCell", bundle: bundle), forCellWithReuseIdentifier: "PhotoCell")
@@ -160,7 +170,11 @@ class AttachmentInputView: UIView {
         }
         self.initialized = true
 
-        PHPhotoLibrary.shared().register(self)
+        self.requestAuthorizationIfNeeded { authorized in
+            if authorized {
+                PHPhotoLibrary.shared().register(self)
+            }
+        }
         self.initializeCollectionView()
         
         NotificationCenter.default.rx.notification(UIResponder.keyboardWillChangeFrameNotification).subscribe(onNext: { [weak self] _ in

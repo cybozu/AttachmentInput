@@ -1,4 +1,5 @@
 // swift-tools-version:5.3
+import PackageDescription
 
 let package = Package(
     name: "AttachmentInput",
@@ -18,6 +19,10 @@ let package = Package(
             dependencies: ["RxSwift",
                            .product(name: "RxCocoa", package: "RxSwift"),
                            "RxDataSources",
-                          ]),
+                          ],
+            path: "./Sources",
+            exclude:["AttachmentInput/Info.plist"],
+            resources: [.copy("Resources/AttachmentInput.strings")]
+        )
     ]
 )

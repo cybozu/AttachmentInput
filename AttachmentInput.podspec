@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "AttachmentInput"
-  s.version      = "0.0.5"
+  s.version      = "1.0.0"
   s.swift_version = "5.0.0"
   s.ios.deployment_target = "12.0"
   s.license      = "MIT"
