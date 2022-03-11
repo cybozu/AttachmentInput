@@ -10,8 +10,8 @@ Pod::Spec.new do |s|
   s.screenshots  = "https://github.com/cybozu/AttachmentInput/raw/master/AttachmentInput.png"
   s.author       = { "daiki-m" => "daikimat.ai@gmail.com" }
   s.source       = { :git => "https://github.com/cybozu/AttachmentInput.git", :tag => s.version }
-  s.source_files = "AttachmentInput/**/*.{generated.swift,swift}"
-  s.resources    = "AttachmentInput/**/*.{xib,xcassets,strings}"
+  s.source_files = "Sources/**/*.{generated.swift,swift}"
+  s.resources    = "Sources/**/*.{xib,xcassets,strings}"
   s.dependency "RxSwift"
   s.dependency "RxCocoa"
   s.dependency "RxDataSources"
