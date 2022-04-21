@@ -12,7 +12,7 @@ AttachmentInput is a photo attachment keyboard.It is similar to the keyboard for
 * Compress image/video
 * Get the image/video file name, file size, thumbnail image
 * Provides custom features
-  * see [AttachmentInputConfig](https://github.com/cybozu/AttachmentInput/blob/master/AttachmentInput/AttachmentInput/AttachmentInputConfiguration.swift)
+  * see [AttachmentInputConfig](https://github.com/cybozu/AttachmentInput/blob/master/Sources/AttachmentInput/AttachmentInputConfiguration.swift)
 
 ## ⚓  Requirements
 - Written in Swift 5
